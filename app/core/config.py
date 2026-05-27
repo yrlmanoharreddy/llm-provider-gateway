@@ -13,8 +13,10 @@ class Settings(BaseSettings):
     groq_base_url: str = "https://api.groq.com/openai/v1"
     groq_model: str = "openai/gpt-oss-20b"
 
+    gemini_model: str = "gemini-2.5-flash"
+
     class Config:
         env_file = ".env"
         extra = "ignore"
 
-Settings = Settings()
+settings = Settings()

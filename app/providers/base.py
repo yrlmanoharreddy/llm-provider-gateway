@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from app.schemas.llm_schema import LLMRequest
 
+
 class BaseLLMProvider(ABC):
 
     @abstractmethod
