@@ -24,7 +24,7 @@ class LlamaIndexProvider(BaseLLMProvider):
                 api_key=settings.gemini_api_key,
             ), settings.gemini_model
         raise ValueError(f"Unsupported provider: {provider}")
-    def generate(self, request: LLMRequest)->tuple(str, str):
+    def generate(self, request: LLMRequest)->tuple[str, str]:
         prompt = build_prompts(request.task, request.input, request.labels)
 
         client, model = self._getllm(request.provider)

@@ -7,7 +7,7 @@ class LLMRequest(BaseModel):
     framework: Framework = Field(..., examples=["direct"])
     task: TaskType = Field(..., examples=["chat"])
     input: str = Field(..., min_length=1)
-    system_promt: str | None = None
+    system_prompt: str | None = None
     labels: list[str] | None = None
     temperature: float = 0.2
     max_tokens: int = 512

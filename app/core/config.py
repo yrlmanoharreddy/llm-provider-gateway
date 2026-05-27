@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     groq_api_key: str | None = None
     gemini_api_key: str | None = None
 
-    ollama_base_url: str = "http://localhost:11434"
+    ollama_base_url: str = "http://localhost:11434/v1"
     ollama_model: str = "llama3.2:1b"
 
     groq_base_url: str = "https://api.groq.com/openai/v1"

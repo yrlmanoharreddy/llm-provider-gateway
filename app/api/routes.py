@@ -11,6 +11,7 @@ router = APIRouter()
 def chat(request: LLMRequest):
     try:
         request.task == TaskType.CHAT
-        return TaskService.execute(request)
+        service = TaskService()
+        return service.execute(request)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

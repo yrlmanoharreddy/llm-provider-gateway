@@ -10,12 +10,12 @@ from app.core.config import settings
 class DirectProvider(BaseLLMProvider):
 
     def _get_openai_comp(self, provider: Provider):
-        if provider == provider.OLLAMA:
+        if provider == Provider.OLLAMA:
             return OpenAI(
                 api_key="ollama",
                 base_url=settings.ollama_base_url,
             ), settings.ollama_model
-        if provider == provider.GROQ:
+        if provider == Provider.GROQ:
             return OpenAI(
                 api_key=settings.groq_api_key,
                 base_url=settings.groq_base_url
@@ -40,7 +40,7 @@ class DirectProvider(BaseLLMProvider):
             messages= [
                 {
                     "role": "system",
-                    "content": request.system_promt or "You are a helpful AI assistant.",
+                    "content": request.system_prompt or "You are a helpful AI assistant.",
                 },
                 {
                     "role" : "user",
@@ -50,4 +50,4 @@ class DirectProvider(BaseLLMProvider):
             temperature=request.temperature,
             max_tokens=request.max_tokens,
         )
-        return response
+        return response.choices[0].message.content or "", model
